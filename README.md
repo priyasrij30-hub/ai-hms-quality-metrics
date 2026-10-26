@@ -10,7 +10,7 @@ QuickMed includes an educational diabetes-classification demonstration at `/risk
 
 - Dataset: Pima Indians Diabetes Database, originally distributed through [Kaggle](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database); the checked-in CSV is a public mirror of the same dataset at [Zue77/Pima-Indians-Diabetes-Dataset](https://github.com/Zue77/Pima-Indians-Diabetes-Dataset).
 - Dataset file: `app/data/diabetes.csv` (768 records; eight numeric inputs plus `Outcome`).
-- Model: scikit-learn logistic regression with median imputation and standardization in a single pipeline. Zero values in glucose, blood pressure, skin thickness, insulin, and BMI are treated as missing before median imputation.
+- Model: scikit-learn 1.6.1 logistic regression with median imputation and standardization in a single pipeline. Zero values in glucose, blood pressure, skin thickness, insulin, and BMI are treated as missing before median imputation.
 - Split: stratified 80/20 train/test split with random seed 42. Run `python train_model.py` from `app/` to reproduce evaluation and write `app/models/diabetes_model.joblib`.
 - Report the printed accuracy, precision, recall, and F1 from the held-out test set; do not interpret them as clinical validation.
 
