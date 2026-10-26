@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo Risk Estimate | QuickMed</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem auto; max-width: 760px; padding: 0 1rem; color: #243247; }
+        h1 { color: #263b69; }
+        .notice { background: #fff4d6; border-left: 4px solid #d79b00; padding: 1rem; line-height: 1.5; }
+        form { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
+        label { display: grid; gap: .4rem; }
+        input { padding: .65rem; border: 1px solid #9aa8ba; border-radius: 4px; }
+        button { grid-column: 1 / -1; padding: .8rem; color: white; background: #2856a6; border: 0; border-radius: 4px; cursor: pointer; }
+        .result, .error { margin: 1rem 0; padding: 1rem; border-radius: 4px; }
+        .result { background: #e9f5eb; } .error { background: #fde9e7; color: #8e1b12; }
+        a { color: #2856a6; }
+    </style>
+</head>
+<body>
+    <p><a href="{{ url_for('home') }}">← Back to QuickMed</a></p>
+    <h1>Diabetes risk prediction demo</h1>
+    <p class="notice"><strong>Educational demo only.</strong> This estimate is produced by a model trained on a limited public dataset. It is not a diagnosis, clinical decision, or substitute for advice from a qualified healthcare professional.</p>
+    {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+    {% if probability is not none %}
+      <section class="result" aria-live="polite">
+        <h2>Model estimate: {{ 'Higher' if probability >= 0.5 else 'Lower' }} risk class</h2>
+        <p>Positive-class model probability: {{ '%.1f'|format(probability * 100) }}%</p>
+        <p>This is a dataset-based demonstration score only, not an individual clinical risk.</p>
+      </section>
+    {% endif %}
+    <form method="post" novalidate>
+      {% for name, label, minimum, maximum, default in fields %}
+        <label for="{{ name }}">{{ label }}
+          <input id="{{ name }}" name="{{ name }}" type="number" step="any" min="{{ minimum }}" max="{{ maximum }}" value="{{ values[name] }}" required>
+        </label>
+      {% endfor %}
+      <button type="submit">Calculate demo estimate</button>
+    </form>
+</body>
+</html>

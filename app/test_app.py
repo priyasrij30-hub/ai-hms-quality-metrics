@@ -201,3 +201,39 @@ def test_users_survive_app_restart(client):                      # EXPECTED DEFE
     init_db()                       # same thing that happens when the app restarts
     client.post("/login", data={"email": user["email"], "password": user["password"]})
     assert is_logged_in(client)
+
+
+# ================= 6. AI risk prediction demo =================
+RISK_INPUTS = {
+    "Pregnancies": "2", "Glucose": "120", "BloodPressure": "70",
+    "SkinThickness": "20", "Insulin": "80", "BMI": "27.5",
+    "DiabetesPedigreeFunction": "0.5", "Age": "35",
+}
+
+
+def test_risk_prediction_requires_login(client):
+    response = client.get("/risk-prediction")
+    assert response.status_code == 302
+    assert "/login" in response.headers["Location"]
+
+
+def test_risk_prediction_page_loads(logged_in_client):
+    response = logged_in_client.get("/risk-prediction")
+    assert response.status_code == 200
+    assert b"Educational demo only" in response.data
+
+
+def test_risk_prediction_returns_demo_probability(logged_in_client):
+    response = logged_in_client.post("/risk-prediction", data=RISK_INPUTS)
+    assert response.status_code == 200
+    assert b"Positive-class model probability" in response.data
+    assert b"not an individual clinical risk" in response.data
+
+
+@pytest.mark.parametrize("field,value", [("Glucose", ""), ("BMI", "not-a-number"), ("Age", "5"), ("Insulin", "nan")])
+def test_risk_prediction_rejects_invalid_inputs(logged_in_client, field, value):
+    data = {**RISK_INPUTS, field: value}
+    response = logged_in_client.post("/risk-prediction", data=data)
+    assert response.status_code == 200
+    assert b"Positive-class model probability" not in response.data
+    assert b"alert" in response.data

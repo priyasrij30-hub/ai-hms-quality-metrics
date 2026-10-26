@@ -2,6 +2,32 @@
 
 ---
 
+## AI risk prediction demo (Member 2)
+
+QuickMed includes an educational diabetes-classification demonstration at `/risk-prediction`, linked from the home page. It is available to signed-in users. The form accepts the eight Pima dataset features and shows a model class probability. This demo is **not a diagnosis or clinical risk assessment** and must not be used for patient care.
+
+### Dataset and model
+
+- Dataset: Pima Indians Diabetes Database, originally distributed through [Kaggle](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database); the checked-in CSV is a public mirror of the same dataset at [Zue77/Pima-Indians-Diabetes-Dataset](https://github.com/Zue77/Pima-Indians-Diabetes-Dataset).
+- Dataset file: `app/data/diabetes.csv` (768 records; eight numeric inputs plus `Outcome`).
+- Model: scikit-learn logistic regression with median imputation and standardization in a single pipeline. Zero values in glucose, blood pressure, skin thickness, insulin, and BMI are treated as missing before median imputation.
+- Split: stratified 80/20 train/test split with random seed 42. Run `python train_model.py` from `app/` to reproduce evaluation and write `app/models/diabetes_model.joblib`.
+- Report the printed accuracy, precision, recall, and F1 from the held-out test set; do not interpret them as clinical validation.
+
+### Setup and verification
+
+From `app/`, install the packages with `pip install -r requirements.txt`, train the model using `python train_model.py`, start the HMS using `python app.py`, and run the project test file using `pytest -v test_app.py`.
+
+Maintainability commands (also from `app/`):
+
+```text
+radon cc . -s -a
+radon mi . -s
+radon raw . -s
+```
+
+Radon reports cyclomatic complexity, maintainability index, and raw source/comment counts. It does not measure code duplication; use a separate duplication analyzer such as SonarCloud or PMD CPD for that metric.
+
 ## **Features**
 - **User Authentication**: Users can sign up, log in, and log out.
 - **Patient Management**: Add, view, and update patient records.
