@@ -1,0 +1,35 @@
+Metric,Category,Stage,Value,Unit,Threshold,Direction,Target,Source,Notes
+Test Pass Rate,Correctness,Before AI,88.2,%,>= 90%,higher,90,Member 1 preliminary results,Preliminary; replace with final team result
+Test Pass Rate,Correctness,With AI,88.2,%,>= 90%,higher,90,Member 1 preliminary results,Preliminary; confirm final
+Code Coverage,Correctness,Before AI,99,%,>= 80%,higher,80,Member 1 preliminary results,Preliminary; verify measurement method
+Code Coverage,Correctness,With AI,84.9,%,>= 80%,higher,80,Member 1 preliminary results,Preliminary; confirm final
+Defect Density,Correctness,Before AI,23,defects/KLOC,<= 20 per KLOC,lower,20,Member 1 preliminary results,Preliminary
+Defect Density,Correctness,With AI,21.8,defects/KLOC,<= 20 per KLOC,lower,20,Member 1 preliminary results,Preliminary
+Defect Density,Correctness,After fix,13.2,defects/KLOC,<= 20 per KLOC,lower,20,Member 1 preliminary results,Preliminary; confirm final
+Test Failure Rate,Correctness,Before AI,11.8,%,<= 10%,lower,10,Member 1 preliminary results,Preliminary
+Test Failure Rate,Correctness,With AI,11.8,%,<= 10%,lower,10,Member 1 preliminary results,Preliminary
+Test Flakiness,Correctness,With AI,0,%,<= 5%,lower,5,Member 1 preliminary results,Preliminary; confirm final
+AI Accuracy,AI Quality,With AI,TBD,%,Team-agreed target,higher,TBD,Member 2 results,Enter verified value
+AI Precision,AI Quality,With AI,TBD,%,Team-agreed target,higher,TBD,Member 2 results,Enter verified value
+AI Recall,AI Quality,With AI,TBD,%,Team-agreed target,higher,TBD,Member 2 results,Enter verified value
+AI F1 Score,AI Quality,With AI,TBD,score,Team-agreed target,higher,TBD,Member 2 results,Enter verified value
+Cyclomatic Complexity,Maintainability,With AI,TBD,score,Team-agreed target,lower,TBD,Member 2 results,Enter verified value and interpretation
+Maintainability Index,Maintainability,With AI,TBD,index,Team-agreed target,higher,TBD,Member 2 results,Enter verified value
+Code Duplication,Maintainability,With AI,TBD,%,Team-agreed target,lower,TBD,Member 2 results,Enter verified value
+Comment Density,Maintainability,With AI,TBD,%,Team-agreed target,Team-agreed direction,TBD,Member 2 results,Confirm how team interprets this metric
+Bandit Security Findings,Security,With AI,TBD,count,0 high-severity findings preferred,lower,TBD,Member 3 results,Enter severity breakdown from report
+Risky Libraries,Security,With AI,TBD,count,0 known vulnerable dependencies preferred,lower,TBD,Member 3 pip-audit results,Enter verified count and package names
+Hardcoded Secret Finding,Security,With AI,TBD,count,0,lower,0,Member 3 results,Enter result; never put secret value in report
+Lighthouse Accessibility - Login,Usability,With AI,TBD,score / 100,Team-agreed target,higher,TBD,Lighthouse report,Run Lighthouse on login page
+Lighthouse Performance - Login,Usability,With AI,TBD,score / 100,Team-agreed target,higher,TBD,Lighthouse report,Run Lighthouse on login page
+Lighthouse Accessibility - Home,Usability,With AI,TBD,score / 100,Team-agreed target,higher,TBD,Lighthouse report,Run Lighthouse on home page
+Lighthouse Performance - Home,Usability,With AI,TBD,score / 100,Team-agreed target,higher,TBD,Lighthouse report,Run Lighthouse on home page
+Lighthouse Accessibility - Register Patient,Usability,With AI,TBD,score / 100,Team-agreed target,higher,TBD,Lighthouse report,Run Lighthouse on register patient page
+Lighthouse Performance - Register Patient,Usability,With AI,TBD,score / 100,Team-agreed target,higher,TBD,Lighthouse report,Run Lighthouse on register patient page
+Lighthouse Accessibility - Risk Prediction,Usability,With AI,TBD,score / 100,Team-agreed target,higher,TBD,Lighthouse report,Run Lighthouse on AI risk prediction page
+Lighthouse Performance - Risk Prediction,Usability,With AI,TBD,score / 100,Team-agreed target,higher,TBD,Lighthouse report,Run Lighthouse on AI risk prediction page
+System Usability Scale (SUS),Usability,With AI,TBD,score / 100,68 is a common reference point,higher,68,SUS questionnaire,Calculate average from actual respondents
+Test Pass Rate,Correctness,After fix,92.7,%,>=90%,higher,90,Member 1 preliminary results,
+Test Failure Rate,Correctness,After fix,7.3,%,<= 10%  ,lower,10,Member 1 preliminary results,
+Code Coverage,Correctness,After fix,99,%,Team-agreed target,higher,TBD,Member 1 preliminary results,
+Code Coverage,Correctness,After fix,32,%,Team-agreed target,higher,TBD,Member 1 preliminary results,
