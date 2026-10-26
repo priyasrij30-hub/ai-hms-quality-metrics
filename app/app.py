@@ -6,6 +6,10 @@ import os
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
+# Keep the demo prediction feature isolated from the core HMS routes.
+from risk_prediction import risk_bp
+app.register_blueprint(risk_bp)
+
 # Database initialization
 def init_db():
     conn = sqlite3.connect('quickmed.db')
