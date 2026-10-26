@@ -38,8 +38,7 @@ def init_db():
                         role TEXT NOT NULL)''')
 
     # Users table for authentication
-    cursor.execute('DROP TABLE IF EXISTS users')
-    cursor.execute('''CREATE TABLE users (
+    cursor.execute('''CREATE TABLE IF NOT EXISTS users (
                      id INTEGER PRIMARY KEY AUTOINCREMENT,
                      firstname TEXT NOT NULL,
                      lastname TEXT NOT NULL,
