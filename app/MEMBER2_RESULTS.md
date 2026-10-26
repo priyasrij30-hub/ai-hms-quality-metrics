@@ -9,6 +9,7 @@ QuickMed has a signed-in `/risk-prediction` page linked from the home page. It r
 | Dataset | Pima Indians Diabetes Database; Kaggle dataset page: https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database |
 | Data file included | `data/diabetes.csv` (768 rows, 8 features and `Outcome`) |
 | Model | Median imputation + standardization + logistic regression, in one scikit-learn pipeline |
+| scikit-learn version | 1.6.1 (pinned to match the version used to train the saved artifact) |
 | Evaluation split | Stratified 80/20; `random_state=42`; test set of 154 records |
 | Accuracy | 70.78% |
 | Precision | 60.00% |
@@ -25,6 +26,7 @@ Measured on `app.py`, `risk_prediction.py` and `train_model.py` using Radon 6.0.
 |---|---|
 | Cyclomatic complexity | 13 blocks; average 3.46 (A); highest is prediction route, rank C, complexity 13 |
 | Maintainability index | `app.py` 47.60 (A); `risk_prediction.py` 48.16 (A); `train_model.py` 49.69 (A) |
+| Comment density | `risk_prediction.py`: 0% (`C%S`, Radon); record as a maintainability finding |
 | Code duplication | 0 cloned lines (0%), 0 clones; jscpd 4.0.5, 3 Python files, minimum 5 lines / 50 tokens |
 
 Commands used from `app/`:
